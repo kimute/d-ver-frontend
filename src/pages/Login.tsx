@@ -1,4 +1,4 @@
-import { ApolloError, gql, useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormError } from '../components/form-error';
@@ -6,6 +6,12 @@ import {
   loginMutation,
   loginMutationVariables,
 } from '../__generated__/loginMutation';
+import logo from '../images/title-logo.svg';
+import { Button } from '../components/button';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { authToken, isLoggedInVar } from '../apollo';
+import { LOCALSTORAGE_TOKEN } from '../constants';
 
 //apollo to DB
 const LOGIN_MUTATION = gql`
@@ -28,14 +34,19 @@ function Login() {
     register,
     getValues,
     handleSubmit,
-    formState: { errors },
-  } = useForm<ILoginform>();
+    formState: { errors, isValid },
+  } = useForm<ILoginform>({
+    mode: 'onChange',
+  });
   const onCompleted = (data: loginMutation) => {
     const {
       login: { error, ok, token },
     } = data;
-    if (ok) {
+    if (ok && token) {
       console.log(token);
+      localStorage.setItem(LOCALSTORAGE_TOKEN, token);
+      authToken(token);
+      isLoggedInVar(true);
     }
   };
   const [loginMutation, { data: loginMutationResult, loading }] = useMutation<
@@ -46,7 +57,7 @@ function Login() {
   });
   const onSubmit = () => {
     if (!loading) {
-      const { email, password } = getValues();
+      const { email, password } = getValues(); //useForm
       loginMutation({
         variables: {
           loginInput: {
@@ -59,32 +70,46 @@ function Login() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white w-full max-w-lg pt-7 pb-5 rounded-lg text-center">
-        <h3 className="font-bold text-2xl text-yellow-400">Log In</h3>
+    // default mt-(for mobile)
+    <div className="h-screen flex items-center flex-col mt-10 lg:mt-30">
+      <Helmet>
+        <title>Login | D-liver</title>
+      </Helmet>
+      <div className="w-full max-w-screen-sm flex flex-col px-5 items-center">
+        <img alt="D-liver" src={logo} className=" w-60 mb-20" />
+        <h4 className="w-full font-medium text-gray-500 text-left text-3xl mb-5">
+          Welcome back
+        </h4>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="grid gap-3 mt-5 px-5"
+          className="grid gap-3 mt-5 w-full"
         >
           <input
             {...register('email', {
               required: 'Email is required',
+              pattern:
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             })}
             name="email"
-            placeholder="email"
-            className="input mb-3 "
+            type="email"
+            placeholder="Email"
+            className="input mb-2 text-a"
           />
           {errors.email?.message && (
             <FormError errorMessage={errors.email.message} />
           )}
+          {errors.email?.type === 'pattern' && (
+            <FormError errorMessage={'Please enter a valid email'} />
+          )}
           <input
             {...register('password', {
-              required: 'Password id required',
+              required: 'Password is required',
               minLength: 10,
             })}
             name="password"
+            type="password"
             placeholder="password"
-            className="input mb-3"
+            className="input mb-2"
           />
           {errors.password?.message && (
             <FormError errorMessage={errors.password.message} />
@@ -92,11 +117,20 @@ function Login() {
           {errors.password?.type === 'minLength' && (
             <FormError errorMessage="Password is too short" />
           )}
-          <button className="btn">{loading ? 'Loading...' : 'Login'}</button>
+          <Button clickOk={isValid} loading={loading} actionText={'Login'} />
           {loginMutationResult?.login.error && (
             <FormError errorMessage={loginMutationResult.login.error} />
           )}
         </form>
+        <div className=" mt-3">
+          New to D-liver ?{' '}
+          <Link
+            to="/create-account"
+            className=" text-yellow-500 hover:underline"
+          >
+            Create Account
+          </Link>
+        </div>
       </div>
     </div>
   );

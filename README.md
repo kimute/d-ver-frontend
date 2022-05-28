@@ -3,8 +3,8 @@
 Description:
 
 - Created for D-ver(Delivery Service App)
-  - See backend:
-    [D-ver Backend](https://github.com/kimute/d-ver-backend)
+  - See backend API:
+    [D-liver Backend](https://github.com/kimute/d-ver-backend)
 - Create page for Owner | Client | Delivery
 
 ### Stack:
@@ -16,6 +16,9 @@ Description:
 ### Use the follow dependencies:
 
 - Apollo Client
+  - why Aopllo Client?
+    - Apollo is faster than Axios or fetch , because it use Cash of Brower memory
+    - with Apollo client you don't have to use complicated logic like Redux
   - To connect API(nestJS)
   - apollo client:codegen
     - create schema file like DTO in Backend
@@ -23,5 +26,11 @@ Description:
      > npm install -g apollo
      > npm install -g graphql
      > apollo client:codegen mytypes.d.ts --target=typescript
+     // after create mutation
+     > npm run apollo:codegen
+     //result example
+     ✔ Loading Apollo Project
+     ✔ Generating query files with 'typescript' target - wrote 5 files
     ```
 - React Router
+- React Helmet

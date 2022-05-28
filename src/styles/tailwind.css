@@ -2,10 +2,10 @@
 @tailwind components;
 .input {
     @apply border focus:ring-2 focus:ring-yellow-400 focus:outline-none
-    focus:ring-opacity-40 focus:border-opacity-30 py-3 px-5 rounded-lg
+    focus:ring-opacity-40 focus:border-opacity-30 py-3 px-5 transition-colors rounded-lg
 }
 .btn {
-    @apply bg-gray-400 text-white hover:bg-yellow-400  hover:text-gray-800 py-3 px-5 rounded-lg
+    @apply bg-gray-400 text-white hover:bg-yellow-400 transition-colors hover:text-gray-800 py-3 px-5 rounded-lg
 
 }
 @tailwind utilities;
