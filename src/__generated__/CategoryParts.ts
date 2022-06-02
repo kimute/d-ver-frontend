@@ -4,11 +4,14 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: EditedUser
+// GraphQL fragment: CategoryParts
 // ====================================================
 
-export interface EditedUser {
-  __typename: "User";
-  verified: boolean;
-  email: string;
+export interface CategoryParts {
+  __typename: "Category";
+  id: number;
+  name: string;
+  coverImage: string | null;
+  slug: string;
+  restaurantCount: number;
 }

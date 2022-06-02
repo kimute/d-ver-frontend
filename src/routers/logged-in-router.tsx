@@ -5,7 +5,11 @@ import { isLoggedInVar } from '../apollo';
 import { Header } from '../components/header';
 import { useMehook } from '../hooks/useMehook';
 import { NotFound } from '../pages/404';
+import { Category } from '../pages/client/category';
 import { Restaurants } from '../pages/client/restaurants';
+import { Search } from '../pages/client/search';
+import { SearchAgain } from '../pages/client/search_again';
+
 import { ConfirmEmail } from '../pages/user/confirm-email';
 import { EditProfile } from '../pages/user/edit-profile';
 
@@ -13,12 +17,23 @@ const ClientRoutes = [
   <Route key={1} path="/" exact>
     <Restaurants />
   </Route>,
-  <Route key={2} path="/confirm" exact>
+  <Route key={2} path="/confirm">
     <ConfirmEmail />
   </Route>,
-  <Route key={3} path="/edit-profile" exact>
-    <EditProfile/>
+  <Route key={3} path="/edit-profile">
+    <EditProfile />
   </Route>,
+  <Route key={4} path="/search">
+    <Search />
+  </Route>,
+  <Route key={5} path="/category/:slug">
+    <Category />
+  </Route>,
+  <Route key={6} path="/research">
+  <SearchAgain/>
+</Route>,
+
+  
 ];
 
 export const LoggedInRouter = () => {
