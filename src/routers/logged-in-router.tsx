@@ -6,10 +6,10 @@ import { Header } from '../components/header';
 import { useMehook } from '../hooks/useMehook';
 import { NotFound } from '../pages/404';
 import { Category } from '../pages/client/category';
+import { Restaurant } from '../pages/client/restaurant';
 import { Restaurants } from '../pages/client/restaurants';
 import { Search } from '../pages/client/search';
 import { SearchAgain } from '../pages/client/search_again';
-
 import { ConfirmEmail } from '../pages/user/confirm-email';
 import { EditProfile } from '../pages/user/edit-profile';
 
@@ -30,10 +30,11 @@ const ClientRoutes = [
     <Category />
   </Route>,
   <Route key={6} path="/research">
-  <SearchAgain/>
-</Route>,
-
-  
+    <SearchAgain />
+  </Route>,
+  <Route key={7} path="/restaurant/:id">
+    <Restaurant />
+  </Route>,
 ];
 
 export const LoggedInRouter = () => {

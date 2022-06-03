@@ -54,7 +54,6 @@ export const Restaurants = () => {
       },
     },
   });
-  console.log(data);
   const onClickNextPage = () => setPage((page) => page + 1);
   const onClickPrevPage = () => setPage((page) => page - 1);
   const { register, handleSubmit, getValues } = useForm<ISearchForm>();

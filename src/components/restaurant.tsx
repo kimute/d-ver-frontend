@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface IRestaurant {
   id: string;
@@ -8,11 +9,13 @@ interface IRestaurant {
 }
 
 export const Restaurant: React.FC<IRestaurant> = ({
+  id,
   coverImg,
   name,
   categoryName,
 }) => {
   return (
+    <Link to={`/restaurant/${id}`}>
     <div className="flex flex-col">
       <div
         style={{ backgroundImage: `url(${coverImg})` }}
@@ -24,5 +27,6 @@ export const Restaurant: React.FC<IRestaurant> = ({
         {categoryName}
       </span>
     </div>
+    </Link>
   );
 };
