@@ -34,3 +34,14 @@ Description:
     ```
 - React Router
 - React Helmet
+
+## TEST
+
+- Testing React Componets
+
+  - collectCoverageFrom
+  - test point of user' view
+
+- E2E Testing
+
+  - using Cypress

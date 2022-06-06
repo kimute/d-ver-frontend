@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { isLoggedInVar } from '../apollo';
 import { NotFound } from '../pages/404';
 import CreateAccount from '../pages/Create-account';
-import Login from '../pages/Login';
+import { Login } from '../pages/Login';
 
 export const LoggedOutRouter = () => {
   return (

@@ -14,7 +14,7 @@ import { authToken, isLoggedInVar } from '../apollo';
 import { LOCALSTORAGE_TOKEN } from '../constants';
 
 //apollo to DB
-const LOGIN_MUTATION = gql`
+export const LOGIN_MUTATION = gql`
   mutation loginMutation($loginInput: LoginInput!) {
     login(input: $loginInput) {
       ok
@@ -29,7 +29,7 @@ interface ILoginform {
   password: string;
 }
 
-function Login() {
+export const Login = () => {
   const {
     register,
     getValues,
@@ -83,6 +83,7 @@ function Login() {
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="grid gap-3 mt-5 w-full"
+          name="loginForm"
         >
           <input
             {...register('email', {
@@ -95,12 +96,13 @@ function Login() {
             placeholder="Email"
             className="input mb-2 text-a"
           />
-          {errors.email?.message && (
-            <FormError errorMessage={errors.email.message} />
-          )}
           {errors.email?.type === 'pattern' && (
             <FormError errorMessage={'Please enter a valid email'} />
           )}
+          {errors.email?.message && (
+            <FormError errorMessage={errors.email.message} />
+          )}
+
           <input
             {...register('password', {
               required: 'Password is required',
@@ -134,6 +136,4 @@ function Login() {
       </div>
     </div>
   );
-}
-
-export default Login;
+};

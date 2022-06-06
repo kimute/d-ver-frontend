@@ -7,7 +7,9 @@ interface IButton {
 }
 
 export const Button: React.FC<IButton> = ({ clickOk, loading, actionText }) => (
+  // eslint-disable-next-line jsx-a11y/no-redundant-roles
   <button
+    role="button"
     className={`text-lg font-medium focus:outline-none text-white py-3 px-5 rounded-lg transition-colors ${
       clickOk
         ? 'bg-gray-400 hover:bg-yellow-400 transition-colors hover:text-gray-800'
