@@ -39,9 +39,13 @@ Description:
 
 - Testing React Componets
 
-  - collectCoverageFrom
-  - test point of user' view
+  - using Jest
+  - test point of user's view
 
 - E2E Testing
 
   - using Cypress
+
+    - How to use
+
+      `npx cypress open`

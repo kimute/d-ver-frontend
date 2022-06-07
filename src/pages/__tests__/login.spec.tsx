@@ -14,7 +14,6 @@ describe('<Login/>', () => {
   beforeEach(async () => {
     await waitFor(async () => {
       mockedClient = createMockClient();
-      // eslint-disable-next-line testing-library/no-wait-for-side-effects
       renderResult = render(
         <HelmetProvider>
           <Router>
@@ -40,7 +39,7 @@ describe('<Login/>', () => {
     await waitFor(() => {
       userEvent.type(email, 'test@test');
     });
-    let errorMessage = screen.getByRole('alert');
+    let errorMessage = getByRole('alert');
 
     expect(errorMessage).toHaveTextContent('Please enter a valid email');
     await waitFor(() => {
@@ -50,7 +49,7 @@ describe('<Login/>', () => {
   });
   it('check password  required errors', async () => {
     const { getByPlaceholderText, getByRole } = renderResult;
-    const email = screen.getByPlaceholderText(/email/i);
+    const email = getByPlaceholderText(/email/i);
     const submitBtn = getByRole('button');
     await waitFor(() => {
       userEvent.type(email, 'test@test');

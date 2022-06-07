@@ -118,13 +118,6 @@ export const EditProfile = () => {
           type="password"
           placeholder="Password"
         />
-        {/* {errors.password?.message && (
-          <FormError errorMessage={errors.password.message} />
-        )}
-        {errors.password?.type === 'minLength' && (
-          <FormError errorMessage="Password is too short" />
-        )} */}
-
         <Button loading={loading} clickOk={isValid} actionText="Save Profile" />
       </form>
     </div>

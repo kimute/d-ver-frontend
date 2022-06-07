@@ -8,8 +8,8 @@ import { UserRole } from '../../__generated__/globalTypes';
 
 //test hook
 const mockPush = jest.fn();
-jest.mock('react-hook-dom', () => {
-  const module = jest.requireActual('react-hook-dom');
+jest.mock('react-router-dom', () => {
+  const module = jest.requireActual('react-router-dom');
   return {
     ...module,
     useHistory: () => {
