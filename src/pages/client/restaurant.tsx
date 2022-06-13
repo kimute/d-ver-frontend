@@ -45,7 +45,7 @@ export const Restaurant = () => {
           backgroundImage: `url(${data?.restaurant.restaurant?.coverImg})`,
         }}
       >
-        <div className="py-28  pl-3 ">
+        <div className="py-28 pl-3">
           <div className="bg-white w-4/12  md:w-2/12 flex flex-col justify-center">
             <h4 className=" text-xl px-2 mb-3 mt-3">
               {data?.restaurant.restaurant?.name}

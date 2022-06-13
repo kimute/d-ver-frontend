@@ -1,17 +1,42 @@
-# Delivery Service App Frontend
+# Delivery Service App (Frontend)
 
 Description:
 
-- Created for D-ver(Delivery Service App)
-  - See backend API:
-    [D-liver Backend](https://github.com/kimute/d-ver-backend)
-- Create page for Owner | Client | Delivery
+- Created for Delivery Service App
+- Responsive Web Application
+- See backend API:
+  [D-liver Backend](https://github.com/kimute/d-ver-backend)
 
 ### Stack:
 
 <img alt="React" src ="https://img.shields.io/badge/React-v18.0.1-61DAFB.svg?&style=for-the-badge&logo=React&logoColor=61DAFB"/>
 <img alt="TypeScript" src ="https://img.shields.io/badge/TypeScript-v4.6.4-3178C6.svg?&style=for-the-badge&logo=TypeScript&logoColor=3178C6"/>
 <img alt="Tailwind CSS" src ="https://img.shields.io/badge/TailWindCSS-v3.0.24-06B6D4.svg?&style=for-the-badge&logo=TailwindCSS&logoColor=06B6D4"/>
+
+### Features
+
+User:
+
+- Login /Logout
+- create user and Rolls (client, owner, Deliver)
+- edit user
+
+Restaurant:
+
+- Create Restaurant
+- See Restaurants(Client , Owner)
+  - Roll restriction
+- Add Dish
+- Dashboard (for Owner)
+  - Chart for Sales (Victory)
+  - Dish List
+
+Payment(todo)
+
+Deploy:(todo)
+
+- Netlify (Front End)
+- Heroku (Back End)
 
 ### Use the follow dependencies:
 
@@ -34,6 +59,7 @@ Description:
     ```
 - React Router
 - React Helmet
+- Victory for chart
 
 ## TEST
 

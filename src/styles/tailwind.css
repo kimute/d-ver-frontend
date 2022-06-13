@@ -8,6 +8,14 @@
     @apply bg-gray-400 text-white hover:bg-yellow-400 transition-colors hover:text-gray-800 py-3 px-5 rounded-lg
 
 }
+
+.container {
+    @apply  w-full max-w-screen-2xl;
+  }
+
+  .link {
+    @apply hover:text-yellow-400 hover:underline;
+  }
 @tailwind utilities;
 
 
