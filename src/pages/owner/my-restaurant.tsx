@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { faHandPointUp } from '@fortawesome/free-regular-svg-icons';
 import {
   faCircleArrowRight,
@@ -25,10 +25,25 @@ import {
   ORDERS_FRAGMENT,
   RESTAURANT_FRAGMENT,
 } from '../../fragments';
+
+import { useMehook } from '../../hooks/useMehook';
 import {
   myRestaurant,
   myRestaurantVariables,
 } from '../../__generated__/myRestaurant';
+import {
+  createPayment,
+  createPaymentVariables,
+} from '../../__generated__/createPayment';
+
+const CREATE_PAYMENT = gql`
+  mutation createPayment($input: CreatePaymentInput!) {
+    createPayment(input: $input) {
+      ok
+      error
+    }
+  }
+`;
 
 export const MY_RESTAURANT_QUERY = gql`
   query myRestaurant($input: MyRestaurantInput!) {
@@ -67,13 +82,51 @@ export const Myrestaurant = () => {
       },
     },
   );
-  console.log('my', data?.myRestaurant.restaurant?.orders);
+  const onCompleted = (data: createPayment) => {
+    if (data.createPayment.ok) {
+      alert('being promoted!');
+    }
+  };
+  const [createPaymentMutation, { loading }] = useMutation<
+    createPayment,
+    createPaymentVariables
+  >(CREATE_PAYMENT, {
+    onCompleted,
+  });
+
+  const { data: userData } = useMehook();
+  const onPaddle = () => {
+    console.log('set paddle needed');
+    if (userData?.me.email) {
+      console.log(userData.me.email);
+
+      // @ts-ignore
+      //   window.Paddle.Setup({ vendor:  });
+      //   // @ts-ignore
+      //   window.Paddle.Checkout.open({
+      //     product: ,
+      //     email: userData.me.email,
+      //     successCallback: (data: any) => {
+      //       createPaymentMutation({
+      //         variables: {
+      //           input: {
+      //             transactionId: data.checkout.id,
+      //             restaurantId: +id,
+      //           },
+      //         },
+      //       });
+      //     },
+      //   });
+    }
+  };
 
   return (
     <div>
       <Helmet>
         {data?.myRestaurant.restaurant?.name || 'Loading ...'} | D-liver
+        <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
       </Helmet>
+      <div className="checkedout"></div>
       <div
         className="py-28 bg-gray-700 bg-cover bg-center"
         style={{
@@ -91,13 +144,13 @@ export const Myrestaurant = () => {
           ADD Dish
           <FontAwesomeIcon icon={faCircleArrowRight} className="text-xl pl-3" />
         </Link>
-        <Link
-          to={``}
+        <span
+          onClick={onPaddle}
           className=" text-white bg-sky-600 hover:bg-yellow-400 py-3 px-4"
         >
           Get Promotion
           <FontAwesomeIcon icon={faCircleArrowRight} className="text-xl pl-3" />
-        </Link>
+        </span>
         <div className="mt-5">
           {data?.myRestaurant.restaurant?.menu.length === 0 ? (
             <div className=" text-lg text-gray-400">

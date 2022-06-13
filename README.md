@@ -31,7 +31,12 @@ Restaurant:
   - Chart for Sales (Victory)
   - Dish List
 
-Payment(todo)
+Payment
+
+- [Paddle](https://www.paddle.com)
+- Functions: finished
+- set up Paddle: (todo)
+  - real Business email & web needed
 
 Deploy:(todo)
 
