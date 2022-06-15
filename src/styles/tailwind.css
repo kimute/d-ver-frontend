@@ -9,6 +9,10 @@
 
 }
 
+.order-btn {
+  @apply bg-gray-400 text-white hover:bg-yellow-400 transition-colors hover:text-gray-800 py-3 px-5
+  
+}
 .container {
     @apply  w-full max-w-screen-2xl;
   }

@@ -157,7 +157,7 @@ export const Myrestaurant = () => {
               Please Add a Dish <FontAwesomeIcon icon={faHandPointUp} />{' '}
             </div>
           ) : (
-            <div className="grid mt-10 mb-3 md:grid-cols-3 gap-x-7 gap-y-10 2xl:w-10 px- text-sm">
+            <div className="grid mt-10 mb-3 md:grid-cols-3 gap-x-7 gap-y-10 2xl:w-10 text-sm">
               {data?.myRestaurant.restaurant?.menu.map(
                 (dishs: any, index: any) => (
                   <Dish
@@ -166,6 +166,7 @@ export const Myrestaurant = () => {
                     description={dishs.description}
                     photo={dishs.photo}
                     price={dishs.price}
+                    isClient={false}
                   />
                 ),
               )}
