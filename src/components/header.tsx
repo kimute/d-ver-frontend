@@ -1,9 +1,4 @@
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-import {
-  faOutdent,
-  faSignOut,
-  faUserAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faSignOut, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';

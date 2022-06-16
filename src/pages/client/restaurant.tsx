@@ -1,12 +1,10 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useHistory, useParams } from 'react-router-dom';
 import { Dish } from '../../components/dish';
 import { DISH_FRAGMENT, RESTAURANT_FRAGMENT } from '../../fragments';
 import { CreateOrderItemInput } from '../../__generated__/globalTypes';
-import { faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons';
 import {
   restaurant,
   restaurantVariables,

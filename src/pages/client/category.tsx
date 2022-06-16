@@ -4,10 +4,9 @@ import {
   faCircleArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { set } from 'react-hook-form';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Restaurant } from '../../components/restaurant';
 import { CATEGORY_FRAGMENT, RESTAURANT_FRAGMENT } from '../../fragments';
 import { category, categoryVariables } from '../../__generated__/category';
@@ -66,7 +65,9 @@ export const Category = () => {
           className="w-20 h-20 bg-gray-100 rounded-full bg-cover bg-center "
         ></div>
         <div className="flex flex-col items-center ml-2 ">
-          <h1 className=" text-xl text-green-500">{data?.category.category?.name}</h1>
+          <h1 className=" text-xl text-green-500">
+            {data?.category.category?.name}
+          </h1>
           <span className=" mt-3 text-white hover:text-yellow-400 text-sm">
             <Link to={`/`}>
               see another <FontAwesomeIcon icon={faCircleArrowRight} />

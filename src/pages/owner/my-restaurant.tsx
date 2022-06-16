@@ -1,23 +1,17 @@
 import { gql, useMutation, useQuery, useSubscription } from '@apollo/client';
 import { faHandPointUp } from '@fortawesome/free-regular-svg-icons';
-import {
-  faCircleArrowRight,
-  faCircleArrowUp,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { divide } from 'cypress/types/lodash';
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { Dish } from '../../components/dish';
 import {
   VictoryAxis,
-  VictoryBar,
   VictoryChart,
   VictoryLabel,
   VictoryLine,
   VictoryTheme,
-  VictoryTooltip,
   VictoryVoronoiContainer,
 } from 'victory';
 import {

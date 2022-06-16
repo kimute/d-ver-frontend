@@ -1,7 +1,5 @@
-import { gql, useQuery } from '@apollo/client';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { isLoggedInVar } from '../apollo';
 import { Header } from '../components/header';
 import { useMehook } from '../hooks/useMehook';
 import { NotFound } from '../pages/404';
@@ -9,7 +7,6 @@ import { Category } from '../pages/client/category';
 import { Restaurant } from '../pages/client/restaurant';
 import { Restaurants } from '../pages/client/restaurants';
 import { Search } from '../pages/client/search';
-import { SearchAgain } from '../pages/client/search_again';
 import { DriverBoard } from '../pages/driver/driverboard';
 import { Order } from '../pages/order';
 import { CreateDish } from '../pages/owner/create-dish';

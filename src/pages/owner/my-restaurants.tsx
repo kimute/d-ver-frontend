@@ -1,6 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
 import {
-  faCircleArrowLeft,
   faCircleArrowRight,
   faHouse,
 } from '@fortawesome/free-solid-svg-icons';

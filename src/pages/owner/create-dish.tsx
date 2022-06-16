@@ -12,7 +12,6 @@ import {
   createDishVariables,
 } from '../../__generated__/createDish';
 import { MY_RESTAURANT_QUERY } from './my-restaurant';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const CREATE_DISH_MUTATION = gql`
   mutation createDish($input: CreateDishInput!) {
