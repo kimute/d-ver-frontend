@@ -9,7 +9,6 @@ import { LOCALSTORAGE_TOKEN } from './constants';
 import { setContext } from '@apollo/client/link/context';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
-import { concat } from 'cypress/types/lodash';
 
 // using Reactive variables to moodify reactive variables anywhere in App without needing to use a graphQL operation
 
@@ -31,10 +30,10 @@ const wsLink = new WebSocketLink({
 });
 
 const httpLink = createHttpLink({
-  uri: 
-  process.env.NODE_ENV === 'production'
-      ? 'https://d-liver-backend.herokuapp.com/graphql':
-      'http://localhost:4000/graphql',
+  uri:
+    process.env.NODE_ENV === 'production'
+      ? 'https://d-liver-backend.herokuapp.com/graphql'
+      : 'http://localhost:4000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

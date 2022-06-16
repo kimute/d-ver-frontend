@@ -37,14 +37,6 @@ interface IDriver {
   $hover?: any;
 }
 
-const Driver: React.FC<IDriver> = () => (
-  <div className="text-lg bg-white w-10 rounded-lg text-center">
-    <FontAwesomeIcon
-      className=" border-yellow-400 text-gray-800"
-      icon={faCar}
-    />
-  </div>
-);
 export const DriverBoard = () => {
   const [dPosition, setDposition] = useState<Ilnglat>({
     lng: 0,

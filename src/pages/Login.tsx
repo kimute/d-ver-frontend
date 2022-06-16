@@ -1,5 +1,5 @@
 import { gql, useMutation } from '@apollo/client';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormError } from '../components/form-error';
 import {
@@ -40,7 +40,7 @@ export const Login = () => {
   });
   const onCompleted = (data: loginMutation) => {
     const {
-      login: { error, ok, token },
+      login: { ok, token },
     } = data;
     if (ok && token) {
       console.log(token);

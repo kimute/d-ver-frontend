@@ -26,33 +26,18 @@ interface IForm {
 
 export const EditProfile = () => {
   const { data: userData, refetch } = useMehook();
-  const client = useApolloClient();
   const onCompleted = async (data: editProfile) => {
     const {
       editProfile: { ok },
     } = data;
     if (ok && userData) {
       const {
-        me: { email: prevEmail, id },
+        me: { email: prevEmail },
       } = userData;
       const { email: newEmail } = getValues();
       if (prevEmail !== newEmail) {
         //update cache
         await refetch(); // this way is simple but call API again
-        // The Way below is faster
-        // client.writeFragment({
-        //   id: `User:${id}`,
-        //   fragment: gql`
-        //     fragment EditedUser on User {
-        //       verified
-        //       email
-        //     }
-        //   `,
-        //   data: {
-        //     email: newEmail,
-        //     verified: false,
-        //   },
-        // });
       }
     }
   };
