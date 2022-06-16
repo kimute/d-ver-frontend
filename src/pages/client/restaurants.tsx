@@ -73,7 +73,7 @@ export const Restaurants = () => {
       </Helmet>
       <form
         onSubmit={handleSubmit(onSearch)}
-        className=" py-40 flex items-center justify-center bg-[url('../images/search-bg-3.png')] bg-no-repeat bg-cover h-20 "
+        className=" py-40 flex items-center justify-center bg-[url('https://dlivers3.s3.ap-northeast-1.amazonaws.com/search-bg-3.png')] bg-no-repeat bg-cover h-20 bg-gray-400 "
       >
         <input
           {...register('searchTerm', {
