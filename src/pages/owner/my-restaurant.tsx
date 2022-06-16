@@ -1,4 +1,4 @@
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { gql, useMutation, useQuery, useSubscription } from '@apollo/client';
 import { faHandPointUp } from '@fortawesome/free-regular-svg-icons';
 import {
   faCircleArrowRight,
@@ -6,9 +6,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { divide } from 'cypress/types/lodash';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { Dish } from '../../components/dish';
 import {
   VictoryAxis,
@@ -22,6 +22,7 @@ import {
 } from 'victory';
 import {
   DISH_FRAGMENT,
+  FULL_ORDER_FRAGMENT,
   ORDERS_FRAGMENT,
   RESTAURANT_FRAGMENT,
 } from '../../fragments';
@@ -35,6 +36,7 @@ import {
   createPayment,
   createPaymentVariables,
 } from '../../__generated__/createPayment';
+import { pendingOrders } from '../../__generated__/pendingOrders';
 
 const CREATE_PAYMENT = gql`
   mutation createPayment($input: CreatePaymentInput!) {
@@ -64,6 +66,15 @@ export const MY_RESTAURANT_QUERY = gql`
   ${RESTAURANT_FRAGMENT}
   ${DISH_FRAGMENT}
   ${ORDERS_FRAGMENT}
+`;
+
+const PENDING_ORDERS_SUB = gql`
+  subscription pendingOrders {
+    pendingOrders {
+      ...FullOrderParts
+    }
+  }
+  ${FULL_ORDER_FRAGMENT}
 `;
 
 interface IPrams {
@@ -119,6 +130,15 @@ export const Myrestaurant = () => {
       //   });
     }
   };
+
+  const { data: subscriptionData } =
+    useSubscription<pendingOrders>(PENDING_ORDERS_SUB);
+  const history = useHistory();
+  useEffect(() => {
+    if (subscriptionData?.pendingOrders.id) {
+      history.push(`/orders/${subscriptionData.pendingOrders.id}`);
+    }
+  }, [subscriptionData]);
 
   return (
     <div>

@@ -146,7 +146,7 @@ export const Restaurant = () => {
     }
   };
 
-  const [createOrderMutation, { loading: placingOrder }] = useMutation<
+  const [createOrderMutation, { loading: readyToOrder }] = useMutation<
     createOrder,
     createOrderVariables
   >(CREATE_ORDER, {
@@ -154,6 +154,9 @@ export const Restaurant = () => {
   });
 
   const confirmOrder = () => {
+    if (readyToOrder) {
+      return;
+    }
     if (orderItems.length === 0) {
       alert('Empty order please make sure your Order.');
       return;

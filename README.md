@@ -31,6 +31,16 @@ Restaurant:
   - Chart for Sales (Victory)
   - Dish List
 
+Order
+
+- real time order
+  - subscriptions-transport-ws(apollo)
+- deliver locatiron
+  - Google Maps API
+  - Gocoding API
+  - Directions API
+    - to show Destination Path
+
 Payment
 
 - [Paddle](https://www.paddle.com)
