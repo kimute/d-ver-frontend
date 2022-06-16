@@ -75,7 +75,7 @@ export const Restaurants = () => {
         onSubmit={handleSubmit(onSearch)}
         className=" py-40 flex items-center justify-center bg-no-repeat bg-cover h-20 bg-gray-400 "
         style={{
-          backgroundImage: `url(https://dlivers3.s3.ap-northeast-1.amazonaws.com/search-bg-3.png)`,
+          backgroundImage: `url('https://cdn.pixabay.com/photo/2014/06/11/17/00/food-366875__480.jpg')`,
         }}
       >
         <input
