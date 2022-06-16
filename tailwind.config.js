@@ -5,7 +5,7 @@ module.exports = {
   //add script in package.json:
   //"tailwind:build": "tailwind build -i ./src/styles/tailwind.css -o ./src/styles/styles.css"
   //build: npm run tailwind:bulid
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  purge: ['./src/**/*.tsx'],
   theme: {
     extend: {
       colors: {
@@ -13,6 +13,9 @@ module.exports = {
         amber: colors.amber,
       },
     },
+  },
+  variants: {
+    extend: {},
   },
   plugins: [],
 };
